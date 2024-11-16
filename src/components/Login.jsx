@@ -156,7 +156,7 @@ export default function Login() {
                 fullWidth
                 margin="normal"
                 helperText={passwordErrorMessage}
-                color={emailError ? "error" : "primary"}
+                color={passwordError ? "error" : "primary"}
                 onChange={handlePasswordChange}
               />
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -10,10 +11,15 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Student from "./components/Student";
+import LiveSessionCalendar from "./components/LiveSessionCalendar";
+import Booking from "./components/Booking";
+
+
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#243642", // Custom primary color
+      main: "#3890E8", // Custom primary color
       contrastText: "#fff", // Text color
     },
     secondary: {
@@ -39,16 +45,26 @@ const theme = createTheme({
 });
 
 function App() {
+  const [bookingDetails, setBookingDetails] = useState(null);
+
+
+  const handleBookingConfirmation = (data) => {
+    setBookingDetails(data);
+  };
+
   return (
     <div>
-        <ThemeProvider theme={theme}>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/sign-up" element={<Register />} />
-            </Routes>
-          </Router>
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/sign-up" element={<Register />} />
+            <Route path="/student-home" element={<Student />} />
+            <Route path="/student-calendar" element={<LiveSessionCalendar bookingDetails={bookingDetails} />} />
+            <Route path="/student-booking" element={<Booking onConfirmBooking={handleBookingConfirmation} />} />
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </div>
   );
 }

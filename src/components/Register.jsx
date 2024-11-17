@@ -16,6 +16,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import Grid from "@mui/material/Grid2";
 
+//dipa tapos validaition and some bugs
 export default function Register() {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -233,15 +234,6 @@ export default function Register() {
                 sx={{ textTransform: "none" }}
               >
                 Sign up with Google
-              </Button>
-              <Button
-                fullWidth
-                variant="outlined"
-                onClick={() => alert("Sign in with Facebook")}
-                startIcon={<FacebookIcon />}
-                sx={{ textTransform: "none" }}
-              >
-                Sign up with Facebook
               </Button>
             </Box>
           </Card>
